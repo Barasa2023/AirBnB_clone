@@ -8,16 +8,23 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb)"
 
-    def do_quit(self):
+    def do_quit(self, arg: str):
         '''Method to exit the interpreter'''
 
         pass
 
-    def do_help(self, arg: str) -> bool | None:
+    def do_help(self, arg: str):
         '''Print help topic'''
-        return super().do_help(arg)
+        
+        pass
+
+    def do_create(self, arg):
+        '''Creates a new instance of BaseModel'''
+        if arg is None:
+            print("** class name missing **")
+        else:
+            print("New instance created")
     
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-    
