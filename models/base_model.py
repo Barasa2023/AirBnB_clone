@@ -31,13 +31,17 @@ class BaseModel:
 
     def __str__(self):
         '''Print the string representation of object'''
-        pass
+        return f"[(self.__class__.__name__)] ({self.id}) {self.__dict__}"
 
     def to_dict(self):
-        '''Returns a dictionary containing all the key/values of __dict__'''
+        '''Returns a dictionary containing all the keys/values of __dict__'''
 
-        self.__dict__["__class__"] = self.__dict__[self.__class__.__name__]
-        return self.__dict__
+        dict_copy = self.__dict__.copy()
+        dict_copy["created_at"] = self.created_at.isoformat()
+        dict_copy["updated_at"] = self.updated_at.isoformat()
+        dict_copy["__class__"] = self.__class__.__name__
+
+        return dict_copy
     
     def save(self):
         '''updates the public instance attribute updated at'''
