@@ -11,24 +11,30 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, arg: str):
         '''Method to exit the interpreter'''
 
-        pass
+        return True
 
     # def do_help(self, arg: str):
     #     '''Print help topic'''
         
 
     def do_EOF(self):
-        '''Handle end of file'''
+        '''Exit the interpreter'''
 
-        pass
+        print()
+        return True
 
     def do_create(self, arg):
-        '''Creates a new instance of BaseModel'''
+        '''Creates a new instance of BaseModel, saves it, and prints the id'''
         if arg is None:
             print("** class name missing **")
-        else:
-            print("New instance created")
-    
+            return
+        try:
+            obj = globals()[arg]()
+            obj.save
+            print(obj.id)
+        
+        except KeyError:
+            print("** class doesn't exist **")    
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
