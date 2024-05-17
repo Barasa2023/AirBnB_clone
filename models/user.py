@@ -3,7 +3,7 @@
 
 from base_model import BaseModel
 
-class Users(BaseModel):
+class User(BaseModel):
     """Base class for creating users"""
 
     email = ""
