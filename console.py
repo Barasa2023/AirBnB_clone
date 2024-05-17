@@ -17,10 +17,6 @@ class HBNBCommand(cmd.Cmd):
 
         return True
 
-    # def do_help(self, arg: str):
-    #     '''Print help topic'''
-        
-
     def do_EOF(self):
         '''Exit the interpreter'''
 
@@ -30,6 +26,7 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, arg):
         '''Creates a new instance of BaseModel, saves it\
             and prints the id'''
+        
         if arg is None:
             print("** class name missing **")
             return
@@ -55,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
             return
         if len(args) < 2:
             print("** instance id missing **")
-        key = args[1] + '.' + args[2]
+        key = args[0] + '.' + args[1]
         if key not in storage.all():
             print("** no instance found **")
             return
@@ -74,7 +71,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) < 2:
             print("** instance id missing **")
             return
-        key = args[1] + '.' + args[2]
+        key = args[0] + '.' + args[1]
         if key not in storage.allz():
             print("** no instance found **")
             return
@@ -113,7 +110,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) < 2:
             print("** instance id missing **")
             return
-        key = args[1] + "." + args[2]
+        key = args[0] + "." + args[1]
         if key not in storage.all():
             print("** no instance found **")
             return

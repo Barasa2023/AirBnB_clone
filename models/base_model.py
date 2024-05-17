@@ -12,13 +12,7 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         '''Initialize intances'''
 
-        #if kwargs is not None and kwargs != {}:
-            # if kwargs["created_at"] == "created_at":
-            #     self.created_at = datetime.now()
-            # elif kwargs["updated_at"] == "updated_at":
-            #     self.updated_at = datetime.now()
-            # else:
-            #     pass
+
         if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
@@ -48,4 +42,5 @@ class BaseModel:
         storage.save()
 
         self.updated_at = datetime.now()
+        storage.save()
     
