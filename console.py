@@ -50,7 +50,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         args = arg.split()
-        if args[0] not in classes:
+        if args[0] not in storage.classes():
             print("** class doesn't exist **")
             return
         if len(args) < 2:
@@ -68,7 +68,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         args = arg.split()
-        if args[0] not in classes:
+        if args[0] not in storage.classes():
             print("** class doesn't exist **")
             return
         if len(args) < 2:
@@ -86,7 +86,7 @@ class HBNBCommand(cmd.Cmd):
         """ Prints all string representation of all instances \
             based or not on the class name"""
         
-        if arg and arg not in classes:
+        if arg and arg not in storage.classes():
             print("** class doesn't exist **")
             return
         if arg:
@@ -107,7 +107,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         args = arg.split()
-        if args[0] not in classes:
+        if args[0] not in storage.classes():
             print("** class doesn't exist **")
             return
         if len(args) < 2:
