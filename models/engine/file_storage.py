@@ -36,6 +36,27 @@ class FileStorage:
         with open(self.__file_path, 'w') as file:
             json.dump(serialized_items, file)
     
+    def classes(self):
+        """Return a list of all the valid classes"""
+
+        from base_model import BaseModel
+        from user import User
+        from amenity import Amenity
+        from city import City
+        from place import Place
+        from review import Review
+        from state import State
+
+        classes = {
+            "BaseModel": BaseModel,
+            "User" : User,
+            "Amenity" : Amenity,
+            "City" : City,
+            "Place" : Place,
+            "Review" : Review,
+            "State" : State
+        }
+        return classes
 
     def reload(self):
         """Deserializes Json file to __objects"""
