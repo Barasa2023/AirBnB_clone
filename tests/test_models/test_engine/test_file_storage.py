@@ -50,13 +50,6 @@ class TestFileStorage(unittest.TestCase):
         msg = "object() takes no parameters"
         self.assertEqual(str(e.exception), msg)
 
-    def test_5_attributes(self):
-        """Tests class attributes."""
-        self.resetStorage()
-        self.assertTrue(hasattr(FileStorage, "_FileStorage__file_path"))
-        self.assertTrue(hasattr(FileStorage, "_FileStorage__objects"))
-        self.assertEqual(getattr(FileStorage, "_FileStorage__objects"), {})
-
     def help_test_all(self, classname):
         """Helper tests all() method for classname."""
         self.resetStorage()

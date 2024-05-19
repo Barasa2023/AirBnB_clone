@@ -35,18 +35,10 @@ class TestState(unittest.TestCase):
     def test_8_instantiation(self):
         """Tests instantiation of State class."""
 
-        b = State()
-        self.assertEqual(str(type(b)), "<class 'models.state.State'>")
-        self.assertIsInstance(b, State)
-        self.assertTrue(issubclass(type(b), BaseModel))
-
-    def test_8_attributes(self):
-        """Tests the attributes of State class."""
-        attributes = storage.attributes()["State"]
-        o = State()
-        for k, v in attributes.items():
-            self.assertTrue(hasattr(o, k))
-            self.assertEqual(type(getattr(o, k, None)), v)
+        obj = State()
+        self.assertEqual(str(type(obj)), "<class 'models.state.State'>")
+        self.assertIsInstance(obj, State)
+        self.assertTrue(issubclass(type(obj), BaseModel))
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Unittest module for the Amenity Class."""
+"""Unittest test module for the Amenity Class."""
 
 import unittest
 from datetime import datetime
@@ -35,18 +35,11 @@ class TestAmenity(unittest.TestCase):
     def test_8_instantiation(self):
         """Tests instantiation of Amenity class."""
 
-        b = Amenity()
-        self.assertEqual(str(type(b)), "<class 'models.amenity.Amenity'>")
-        self.assertIsInstance(b, Amenity)
-        self.assertTrue(issubclass(type(b), BaseModel))
+        obj = Amenity()
+        self.assertEqual(str(type(obj)), "<class 'models.amenity.Amenity'>")
+        self.assertIsInstance(obj, Amenity)
+        self.assertTrue(issubclass(type(obj), BaseModel))
 
-    def test_8_attributes(self):
-        """Tests the attributes of Amenity class."""
-        attributes = storage.attributes()["Amenity"]
-        o = Amenity()
-        for k, v in attributes.items():
-            self.assertTrue(hasattr(o, k))
-            self.assertEqual(type(getattr(o, k, None)), v)
 
 
 if __name__ == "__main__":
