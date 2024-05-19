@@ -2,6 +2,7 @@
 '''Console interpreter'''
 
 import cmd
+import json
 
 from models.engine import file_storage
 
@@ -23,22 +24,33 @@ class HBNBCommand(cmd.Cmd):
 
         print()
         return True
+    
+    def update_dict(self, classname, uid, s_dict):
+        """Helper method for update() with a dictionary."""
+        s = s_dict.replace("'", '"')
+        d = json.loads(s)
+        if not classname:
+            print("** class name missing **")
+        elif classname not in storage.classes():
+            print("** class doesn't exist **")
+        elif uid is None:
+            print("** instance id missing **")
+        else:
+            key = "{}.{}".format(classname, uid)
+            if key not in storage.all():
+                print("** no instance found **")
+            else:
+                attributes = storage.attributes()[classname]
+                for attribute, value in d.items():
+                    if attribute in attributes:
+                        value = attributes[attribute](value)
+                    setattr(storage.all()[key], attribute, value)
+                storage.all()[key].save()
+   
 
     def do_create(self, arg):
         '''Creates a new instance of BaseModel, saves it\
             and prints the id'''
-        
-        
-        # if not arg:
-        #     print(" ** class name missing **")
-        #     return
-        # try:
-        #     obj = storage.classes()[arg]()
-        #     obj.save()
-        #     print(obj.id)
-        
-        # except KeyError:
-        #     print("** class doesn't exist")
         if arg == "" or arg is None:
                 print("** class name missing **")
         elif arg not in storage.classes():
