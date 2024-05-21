@@ -6,14 +6,14 @@ import os
 
 
 class FileStorage:
-    """Serializes instances to a JSON file and deserializes JSON file to instances"""
+    """Serializes instances to a JSON file and 
+    deserializes JSON file to instances"""
 
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
         """Return the dictionary __objects"""
-
         return self.__objects
     
     def new(self, obj):
@@ -21,13 +21,10 @@ class FileStorage:
 
         key = "{}.{}".format(type(obj).__name__, obj.id)
         FileStorage.__objects[key] = obj
-
-
+    
     def save(self):
         """Serializes objects to Json file"""
-
         # serialized_items = {}
-        
         # for key, item in self.__objects.items():
         #     serialized_items[key] = item.to_dict()
         # with open(self.__file_path, 'w') as file:
