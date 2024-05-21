@@ -25,6 +25,11 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
+    def emptyline(self):
+        """Doesn't do anything on ENTER.
+        """
+        pass
+
     def update_dict(self, classname, uid, s_dict):
         """Helper method for update() with a dictionary."""
         s = s_dict.replace("'", '"')
