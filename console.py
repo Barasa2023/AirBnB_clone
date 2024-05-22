@@ -108,8 +108,7 @@ class HBNBCommand(cmd.Cmd):
                     if attribute in attributes:
                         value = attributes[attribute](value)
                     setattr(storage.all()[key], attribute, value)
-                storage.all()[key].save()  
-
+                storage.all()[key].save()
     def do_create(self, arg):
         '''Creates a new instance of BaseModel, saves it
             and prints the id'''
@@ -120,10 +119,10 @@ class HBNBCommand(cmd.Cmd):
         else:
             b = storage.classes()[arg]()
             b.save()
-            print(b.id)         
- 
+            print(b.id)
+
     def do_show(self, arg):
-        """ Prints the string representation of an instance based\
+        """ Prints the string representation of an instance based
             on the class name and id"""
         if not arg:
             print("** class name missing **")
@@ -140,11 +139,10 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
                 else:
                     print(storage.all()[key])
-                    
+
     def do_destroy(self, arg):
-        """Deletes an instance based on the class name and \
+        """Deletes an instance based on the class name and
             id (save the change into the JSON file"""
-        
         if not arg:
             print("** class name missing **")
             return
@@ -161,7 +159,6 @@ class HBNBCommand(cmd.Cmd):
             return
         del storage.all()[key]
         storage.save()
-    
 
     def do_all(self, arg):
         """ Prints all string representation of all instances
@@ -184,7 +181,6 @@ class HBNBCommand(cmd.Cmd):
         if arg == "" or arg is None:
             print("** class name missing **")
             return
-
         rex = r'^(\S+)(?:\s(\S+)(?:\s(\S+)(?:\s((?:"[^"]*")|(?:(\S)+)))?)?)?'
         match = re.search(rex, arg)
         classname = match.group(1)
@@ -224,10 +220,11 @@ class HBNBCommand(cmd.Cmd):
                         pass  # fine, stay a string then
                 setattr(storage.all()[key], attribute, value)
                 storage.all()[key].save()
-        
+
     def do_count(self, arg):
         """Counts the instances of a class.
         """
+
         words = arg.split(' ')
         if not words[0]:
             print("** class name missing **")
