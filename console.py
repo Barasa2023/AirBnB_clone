@@ -13,7 +13,7 @@ class HBNBCommand(cmd.Cmd):
     '''Contains the entry point of the command interpreter'''
 
     prompt = "(hbnb)"
-    
+
     def default(self, arg):
         """Catch commands if nothing else matches then."""
         # print("DEF:::", arg)
